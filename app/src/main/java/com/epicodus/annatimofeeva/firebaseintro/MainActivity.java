@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button login;
-
+    private Button signout;
 
 
     @Override
@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.loginButton);
-
+        signout = (Button) findViewById(R.id.signOut
+        );
         //To write to database
 //
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     //user is signed in
                     Log.d(TAG, "user signed in");
+                    Log.d(TAG, user.getEmail());
 
                 }else {
                     //user is signed out
@@ -126,6 +128,14 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Toast.makeText(MainActivity.this, "You signed out", Toast.LENGTH_SHORT).show();
             }
         });
 
