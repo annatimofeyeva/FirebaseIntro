@@ -61,20 +61,20 @@ public class MainActivity extends AppCompatActivity {
 
         //To read from deatabase
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                String value = dataSnapshot.getValue(String.class);
+//                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailString = email.getText().toString();
+                final String emailString = email.getText().toString();
                 String pwd = password.getText().toString();
 
                 if (!emailString.equals("") && !pwd.equals("")) {
@@ -110,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, "Failed in sign in", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(MainActivity.this, "Sign in!", Toast.LENGTH_SHORT).show();
+
+                                        // we can now write to Firebase
+                                        // databaseReference.setValue("Hey, I am in");
+
+                                        // Saving object:
+
+                                        Customer customer = new Customer("Anna", "Timofeeva", emailString, 47);
+
+                                        databaseReference.setValue(customer);
+
                                     }
                                 }
                             });
