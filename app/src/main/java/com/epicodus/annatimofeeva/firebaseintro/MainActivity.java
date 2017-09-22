@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
     private Button login;
     private Button signout;
+    private Button createAct;
 
 
     @Override
@@ -43,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.loginButton);
-        signout = (Button) findViewById(R.id.signOut
-        );
+        signout = (Button) findViewById(R.id.signOut);
+        createAct = (Button) findViewById(R.id.createact);
+
         //To write to database
 //
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "user signed in");
                     Log.d(TAG, user.getEmail());
 
-                }else {
+                } else {
                     //user is signed out
                     Log.d(TAG, "user signed out");
                 }
@@ -139,24 +141,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        createAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String emailString = email.getText().toString();
+                String pwd = password.getText().toString();
+
+                if (!emailString.equals("") && !pwd.equals("")) {
+                    mAuth.createUserWithEmailAndPassword(emailString,pwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "FAILED", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                Toast.makeText(MainActivity.this, "ACCOUNT CREATED", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+        } //end of OnCreate
+
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
         //protected the user can reauthenticate himself many time
-        if(mAuthListener != null){
+        if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
-
     }
-}
+}// end of Class
+
+
+
+
 
 
 
