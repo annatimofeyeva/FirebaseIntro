@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "415657216368",
+    "firebase_url": "https://fir-intro-a3a80.firebaseio.com",
+    "project_id": "fir-intro-a3a80",
+    "storage_bucket": "fir-intro-a3a80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415657216368:android:7eba716df4882a15",
+        "android_client_info": {
+          "package_name": "com.epicodus.annatimofeeva.firebaseintro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415657216368-80p6liin0hfje41t3it1g7ebn3298o5c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.annatimofeeva.firebaseintro",
+            "certificate_hash": "a9bf0544bab63fe534e25a2842c41a9a6e150bed"
+          }
+        },
+        {
+          "client_id": "415657216368-u0mkjpp52rhnq9rcdcin1l8rndogh5dq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9-gpUYMC9IsbuNgRvfCMduVIrFW92HD4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415657216368-u0mkjpp52rhnq9rcdcin1l8rndogh5dq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
